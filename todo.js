@@ -106,38 +106,16 @@ class DisplayTasks extends React.Component {
   }
 
   render() {
-    let btn_class = this.props.mark ? "blackButton" : "whiteButton";
-    return (
-      <View>
-        {this.props.contents.map((item, index) => {
-          <View
-            className={" list-group-item list-group-item-action " + btn_class}
-            style={{ display: "inline-block" }}
-          >
-            <Text>
-              {item}
-              <Button
-                onPress={() => {
-                  this.props.markContent(index);
-                }}
-                className="btn btn-success "
-                style={{ marginLeft: 400, marginRight: 10, paddingRight: 10 }}
-              >
-                <i className="fa fa-check "></i>
-              </Button>
-              <Button
-                onPress={() => {
-                  this.props.deleteContent(index);
-                }}
-                className="btn btn-danger"
-              >
-                <i className="fa fa-times btn-danger"></i>
-              </Button>
-            </Text>
-          </View>;
-        })}
-      </View>
-    );
+    {
+      let task = this.props.contents.map((item, index) => {
+        // console.log(item);
+        return <Text>{item.content}</Text>;
+      });
+      console.log(task);
+      return <View>{task}</View>;
+    }
+
+    // );
   }
 }
 
