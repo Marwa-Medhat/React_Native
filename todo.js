@@ -106,10 +106,32 @@ class DisplayTasks extends React.Component {
   }
 
   render() {
+    let btn_class = this.props.mark ? "blackButton" : "whiteButton";
     {
       let task = this.props.contents.map((item, index) => {
         // console.log(item);
-        return <Text>{item.content}</Text>;
+        return (
+          <Text>
+            <Button
+              onPress={() => {
+                this.props.markContent(index);
+              }}
+              title="Done "
+              style={{ marginLeft: 400, marginRight: 10, paddingRight: 10 }}
+            >
+              {/* <i className="fa fa-check "></i> */}
+            </Button>
+            <Button
+              onPress={() => {
+                this.props.deleteContent(index);
+              }}
+              title="Delete"
+            >
+              {/* <i className="fa fa-times btn-danger"></i> */}
+            </Button>
+            {item.content}
+          </Text>
+        );
       });
       console.log(task);
       return <View>{task}</View>;
